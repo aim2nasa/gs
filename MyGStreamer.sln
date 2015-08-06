@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "videotestsrc", "videotestsr
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "videotestsrc_videoconvert", "videotestsrc_videoconvert\videotestsrc_videoconvert.vcxproj", "{EC4AE10A-8242-437D-B71D-B1B4F8A8D8A1}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tcpClientStreaming1", "tcpClientStreaming1\tcpClientStreaming1.vcxproj", "{73A21E3D-ED80-4547-A435-E18E38CC3C99}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Mixed Platforms = Debug|Mixed Platforms
@@ -41,6 +43,16 @@ Global
 		{EC4AE10A-8242-437D-B71D-B1B4F8A8D8A1}.Release|x64.ActiveCfg = Release|x64
 		{EC4AE10A-8242-437D-B71D-B1B4F8A8D8A1}.Release|x64.Build.0 = Release|x64
 		{EC4AE10A-8242-437D-B71D-B1B4F8A8D8A1}.Release|x64.Deploy.0 = Release|x64
+		{73A21E3D-ED80-4547-A435-E18E38CC3C99}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{73A21E3D-ED80-4547-A435-E18E38CC3C99}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{73A21E3D-ED80-4547-A435-E18E38CC3C99}.Debug|Win32.ActiveCfg = Debug|Win32
+		{73A21E3D-ED80-4547-A435-E18E38CC3C99}.Debug|Win32.Build.0 = Debug|Win32
+		{73A21E3D-ED80-4547-A435-E18E38CC3C99}.Debug|x64.ActiveCfg = Debug|x64
+		{73A21E3D-ED80-4547-A435-E18E38CC3C99}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{73A21E3D-ED80-4547-A435-E18E38CC3C99}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{73A21E3D-ED80-4547-A435-E18E38CC3C99}.Release|Win32.ActiveCfg = Release|Win32
+		{73A21E3D-ED80-4547-A435-E18E38CC3C99}.Release|Win32.Build.0 = Release|Win32
+		{73A21E3D-ED80-4547-A435-E18E38CC3C99}.Release|x64.ActiveCfg = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
