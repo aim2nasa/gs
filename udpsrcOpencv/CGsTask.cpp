@@ -1,5 +1,7 @@
 #include "CGsTask.h"
-#include <opencv2/opencv.hpp>
+//#include <opencv2/opencv.hpp>
+
+ACE_Task<ACE_MT_SYNCH>* CGsTask::s_consumer = NULL;
 
 CGsTask::CGsTask()
 {
@@ -62,6 +64,7 @@ GstFlowReturn CGsTask::new_sample(GstAppSink *appsink, gpointer data)
 	ACE_DEBUG((LM_DEBUG, ">"));
 	GstSample *sample = gst_app_sink_pull_sample(appsink);
 	GstCaps *caps = gst_sample_get_caps(sample);
+	GstStructure *s = gst_caps_get_structure(caps, 0);
 	GstBuffer *buffer = gst_sample_get_buffer(sample);
 	const GstStructure *info = gst_sample_get_info(sample);
 
@@ -70,9 +73,18 @@ GstFlowReturn CGsTask::new_sample(GstAppSink *appsink, gpointer data)
 
 	// convert gstreamer data to OpenCV Mat, you could actually
 	// resolve height / width from caps...
-	cv::Mat frame(cv::Size(320, 240), CV_8UC3, (char*)map.data, cv::Mat::AUTO_STEP);
+
+	gint width, height;
+	gst_structure_get_int(s, "width", &width);
+	gst_structure_get_int(s, "height", &height);
+	//ACE_DEBUG((LM_DEBUG, "width:%d height:%d\n", width, height));
+
+	//cv::Mat frame(cv::Size(width, height), CV_8SC1, (char*)map.data, cv::Mat::AUTO_STEP);
 
 	//enqueue frame
+	ACE_Message_Block *pBlock = new ACE_Message_Block(map.size);
+	pBlock->copy(reinterpret_cast<const char*>(map.data),map.size);
+	s_consumer->putq(pBlock);
 
 	gst_buffer_unmap(buffer, &map);
 	gst_sample_unref(sample);

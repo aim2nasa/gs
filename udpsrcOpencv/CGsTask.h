@@ -11,6 +11,8 @@ public:
 	CGsTask();
 	virtual int svc(void);
 
+	static ACE_Task<ACE_MT_SYNCH> *s_consumer;
+
 	static GstFlowReturn new_preroll(GstAppSink *appsink, gpointer data);
 	static GstFlowReturn new_sample(GstAppSink *appsink, gpointer data);
 	static gboolean my_bus_callback(GstBus *bus, GstMessage *message, gpointer data);
