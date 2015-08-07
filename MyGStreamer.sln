@@ -17,6 +17,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "udpsrc", "udpsrc\udpsrc.vcx
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "udpsrcOpencv", "udpsrcOpencv\udpsrcOpencv.vcxproj", "{F6652B89-F39E-4A67-BB83-BC6BE724D375}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SimpleVideoCapture", "SimpleVideoCapture\SimpleVideoCapture.vcxproj", "{A9C37597-A9F9-4B4B-A166-BB2C511B4E71}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Mixed Platforms = Debug|Mixed Platforms
@@ -103,6 +105,16 @@ Global
 		{F6652B89-F39E-4A67-BB83-BC6BE724D375}.Release|Win32.ActiveCfg = Release|Win32
 		{F6652B89-F39E-4A67-BB83-BC6BE724D375}.Release|Win32.Build.0 = Release|Win32
 		{F6652B89-F39E-4A67-BB83-BC6BE724D375}.Release|x64.ActiveCfg = Release|x64
+		{A9C37597-A9F9-4B4B-A166-BB2C511B4E71}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{A9C37597-A9F9-4B4B-A166-BB2C511B4E71}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{A9C37597-A9F9-4B4B-A166-BB2C511B4E71}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A9C37597-A9F9-4B4B-A166-BB2C511B4E71}.Debug|Win32.Build.0 = Debug|Win32
+		{A9C37597-A9F9-4B4B-A166-BB2C511B4E71}.Debug|x64.ActiveCfg = Debug|x64
+		{A9C37597-A9F9-4B4B-A166-BB2C511B4E71}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{A9C37597-A9F9-4B4B-A166-BB2C511B4E71}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{A9C37597-A9F9-4B4B-A166-BB2C511B4E71}.Release|Win32.ActiveCfg = Release|Win32
+		{A9C37597-A9F9-4B4B-A166-BB2C511B4E71}.Release|Win32.Build.0 = Release|Win32
+		{A9C37597-A9F9-4B4B-A166-BB2C511B4E71}.Release|x64.ActiveCfg = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
