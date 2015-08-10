@@ -19,7 +19,7 @@ int COcvTask::svc(void)
 			break;
 		}
 
-		cv::Mat frame(cv::Size(640, 320), CV_8UC1, message->rd_ptr(), cv::Mat::AUTO_STEP);
+		cv::Mat frame(cv::Size(640, 480), CV_8UC1, message->rd_ptr(), cv::Mat::AUTO_STEP);
 		cv::imshow("Raspberry", frame);
 		cv::waitKey(30);
 
