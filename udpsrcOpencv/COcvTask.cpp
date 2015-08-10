@@ -19,7 +19,9 @@ int COcvTask::svc(void)
 			break;
 		}
 
-		cv::Mat frame(cv::Size(1920, 1080), CV_8SC1, message->rd_ptr(), cv::Mat::AUTO_STEP);
+		cv::Mat frame(cv::Size(640, 320), CV_8UC1, message->rd_ptr(), cv::Mat::AUTO_STEP);
+		cv::imshow("Raspberry", frame);
+		cv::waitKey(30);
 
 		ACE_DEBUG((LM_DEBUG, "."));
 		message->release();
