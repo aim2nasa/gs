@@ -11,8 +11,12 @@ int ACE_TMAIN(int argc, ACE_TCHAR *argv[])
 
 	CGsTask::s_consumer = &ocv;
 
-	ocv.activate();
 	gs.activate();
+
+	CGsTask::s_sampleEvt.wait();
+	ocv._width = CGsTask::s_width;
+	ocv._height = CGsTask::s_height;
+	ocv.activate();
 
 	ocv.wait();
 	gs.wait();

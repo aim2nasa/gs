@@ -1,6 +1,9 @@
 #include "CGsTask.h"
 
 ACE_Task<ACE_MT_SYNCH>* CGsTask::s_consumer = NULL;
+ACE_Auto_Event CGsTask::s_sampleEvt;
+int CGsTask::s_width = 0;
+int CGsTask::s_height = 0;
 
 CGsTask::CGsTask()
 {
@@ -70,10 +73,9 @@ GstFlowReturn CGsTask::new_sample(GstAppSink *appsink, gpointer data)
 	GstMapInfo map;
 	gst_buffer_map(buffer, &map, GST_MAP_READ);
 
-	gint width, height;
-	gst_structure_get_int(s, "width", &width);
-	gst_structure_get_int(s, "height", &height);
-	//ACE_DEBUG((LM_DEBUG, "width:%d height:%d\n", width, height));
+	gst_structure_get_int(s, "width", &CGsTask::s_width);
+	gst_structure_get_int(s, "height", &CGsTask::s_height);
+	//ACE_DEBUG((LM_DEBUG, "width:%d height:%d\n", &CGsTask::s_width, &CGsTask::s_height));
 
 	//enqueue frame
 	ACE_Message_Block *pBlock = new ACE_Message_Block(map.size);
@@ -82,6 +84,7 @@ GstFlowReturn CGsTask::new_sample(GstAppSink *appsink, gpointer data)
 
 	gst_buffer_unmap(buffer, &map);
 	gst_sample_unref(sample);
+	CGsTask::s_sampleEvt.signal();
 	return GST_FLOW_OK;
 }
 

@@ -2,6 +2,7 @@
 #include <opencv2/opencv.hpp>
 
 COcvTask::COcvTask()
+:_width(0), _height(0)
 {
 
 }
@@ -19,7 +20,8 @@ int COcvTask::svc(void)
 			break;
 		}
 
-		cv::Mat frame(cv::Size(640, 480), CV_8UC1, message->rd_ptr(), cv::Mat::AUTO_STEP);
+		ACE_ASSERT(_width > 0 && _height > 0);
+		cv::Mat frame(cv::Size(_width,_height), CV_8UC1, message->rd_ptr(), cv::Mat::AUTO_STEP);
 		cv::imshow("Raspberry", frame);
 		cv::waitKey(30);
 
