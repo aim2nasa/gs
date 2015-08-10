@@ -1,5 +1,4 @@
 #include "CGsTask.h"
-//#include <opencv2/opencv.hpp>
 
 ACE_Task<ACE_MT_SYNCH>* CGsTask::s_consumer = NULL;
 
@@ -71,15 +70,10 @@ GstFlowReturn CGsTask::new_sample(GstAppSink *appsink, gpointer data)
 	GstMapInfo map;
 	gst_buffer_map(buffer, &map, GST_MAP_READ);
 
-	// convert gstreamer data to OpenCV Mat, you could actually
-	// resolve height / width from caps...
-
 	gint width, height;
 	gst_structure_get_int(s, "width", &width);
 	gst_structure_get_int(s, "height", &height);
 	//ACE_DEBUG((LM_DEBUG, "width:%d height:%d\n", width, height));
-
-	//cv::Mat frame(cv::Size(width, height), CV_8SC1, (char*)map.data, cv::Mat::AUTO_STEP);
 
 	//enqueue frame
 	ACE_Message_Block *pBlock = new ACE_Message_Block(map.size);
