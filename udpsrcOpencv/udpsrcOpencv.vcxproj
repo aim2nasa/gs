@@ -137,6 +137,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(ACE_HOME);$(GSTREAMER_1_0_ROOT_X86_64)\include\gstreamer-1.0;$(GSTREAMER_1_0_ROOT_X86_64)\include\glib-2.0;$(GSTREAMER_1_0_ROOT_X86_64)\lib\glib-2.0\include;$(GSTREAMER_1_0_ROOT_X86_64)\include;$(OPENCV_DIR)\..\..\include</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4996</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -155,6 +156,10 @@
   <ItemGroup>
     <ClInclude Include="CGsTask.h" />
     <ClInclude Include="COcvTask.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="haarcascade_eye_tree_eyeglasses.xml" />
+    <Xml Include="haarcascade_frontalface_alt.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

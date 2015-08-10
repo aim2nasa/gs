@@ -33,4 +33,8 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Xml Include="haarcascade_eye_tree_eyeglasses.xml" />
+    <Xml Include="haarcascade_frontalface_alt.xml" />
+  </ItemGroup>
 </Project>
