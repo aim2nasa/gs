@@ -58,6 +58,7 @@ void COcvTask::detectAndDisplay(cv::Mat frame)
 	{
 		cv::Point center(faces[i].x + faces[i].width / 2, faces[i].y + faces[i].height / 2);
 		ellipse(frame, center, cv::Size(faces[i].width / 2, faces[i].height / 2), 0, 0, 360, cv::Scalar(255, 0, 255), 2, 8, 0);
+		ACE_DEBUG((LM_DEBUG, "faces[%d],width(%d),height(%d) ",i,faces[i].width,faces[i].height));
 
 		cv::Mat faceROI = frame_gray(faces[i]);
 		std::vector<cv::Rect> eyes;
@@ -70,7 +71,9 @@ void COcvTask::detectAndDisplay(cv::Mat frame)
 			cv::Point eye_center(faces[i].x + eyes[j].x + eyes[j].width / 2, faces[i].y + eyes[j].y + eyes[j].height / 2);
 			int radius = cvRound((eyes[j].width + eyes[j].height)*0.25);
 			circle(frame, eye_center, radius, cv::Scalar(255, 0, 0), 3, 8, 0);
+			ACE_DEBUG((LM_DEBUG, "eyes[%d],width(%d),height(%d) ", j, eyes[j].width, eyes[j].height));
 		}
+		ACE_DEBUG((LM_DEBUG, "\n"));
 	}
 	//-- Show what you got
 	cv::imshow(window_name, frame);
