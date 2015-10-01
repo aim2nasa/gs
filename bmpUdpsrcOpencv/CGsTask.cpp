@@ -115,8 +115,10 @@ int CGsTask::fetchFrame(std::vector<char>& buffer, char bmpHeader[], int nBmpSiz
 {
 	memcpy(bmpHeader + 2, &nBmpSize, sizeof(int));
 
-	int nCount = 0;
-	while (buffer.size() >= nBmpSize) {
+	ACE_DEBUG((LM_CRITICAL, "buffer:%d,bmpSize:%d", buffer.size(), nBmpSize));
+
+	int nCount = 0, nDelCount=0;
+	while (buffer.size() > nBmpSize) {
 		if (findHeader(buffer, bmpHeader)) {
 			ACE_Message_Block *pBlock = new ACE_Message_Block(nBmpSize);
 			pBlock->copy(&buffer[0], nBmpSize);
@@ -126,8 +128,10 @@ int CGsTask::fetchFrame(std::vector<char>& buffer, char bmpHeader[], int nBmpSiz
 		}
 		else{
 			buffer.erase(buffer.begin());
+			nDelCount++;
 		}
 	}
+	ACE_DEBUG((LM_CRITICAL, ",Buf:%d, Que:%d Erased:%d \n", buffer.size(), nCount, nDelCount));
 	return nCount;
 }
 
