@@ -14,11 +14,10 @@ int ACE_TMAIN(int argc, ACE_TCHAR *argv[])
 
 	CGsTask::s_consumer = &ocv;
 
-	gs.activate();
-
 	ocv._width = CGsTask::s_width = WIDTH;
 	ocv._height = CGsTask::s_height = HEIGHT;
-	ACE_DEBUG((LM_DEBUG, "from stream, width:%d height:%d\n", ocv._width,ocv._height));
+	ACE_DEBUG((LM_DEBUG, "width:%d height:%d\n", ocv._width,ocv._height));
+	gs.activate();
 	ocv.activate();
 
 	ocv.wait();
