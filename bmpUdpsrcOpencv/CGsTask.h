@@ -5,6 +5,7 @@
 #include <gst/gst.h>
 #include <gst/app/gstappsink.h>
 #include <ace/Auto_Event.h>
+#include <vector>
 
 class CGsTask : public ACE_Task < ACE_MT_SYNCH >
 {
@@ -19,6 +20,12 @@ public:
 	static GstFlowReturn new_preroll(GstAppSink *appsink, gpointer data);
 	static GstFlowReturn new_sample(GstAppSink *appsink, gpointer data);
 	static gboolean my_bus_callback(GstBus *bus, GstMessage *message, gpointer data);
+	static int fetchFrame(std::vector<char>& buffer, char bmpHeader[], int nBmpSize);
+	static bool findHeader(std::vector<char>& buffer, char header[]);
+
+protected:
+	static std::vector<char> s_buffer;
+	static char s_bmpHeader[6];
 };
 
 #endif

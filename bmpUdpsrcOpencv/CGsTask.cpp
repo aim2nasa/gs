@@ -3,6 +3,8 @@
 ACE_Task<ACE_MT_SYNCH>* CGsTask::s_consumer = NULL;
 int CGsTask::s_width = 0;
 int CGsTask::s_height = 0;
+std::vector<char> CGsTask::s_buffer;
+char CGsTask::s_bmpHeader[] = { "BM" };
 
 CGsTask::CGsTask()
 {
@@ -65,10 +67,16 @@ GstFlowReturn CGsTask::new_sample(GstAppSink *appsink, gpointer data)
 	GstMapInfo map;
 	gst_buffer_map(buffer, &map, GST_MAP_READ);
 
-	//enqueue frame
-	ACE_Message_Block *pBlock = new ACE_Message_Block(map.size);
-	pBlock->copy(reinterpret_cast<const char*>(map.data),map.size);
-	s_consumer->putq(pBlock);
+	s_buffer.insert(s_buffer.end(), map.data, map.data + map.size);
+	if (s_width > 0 && s_height > 0) {
+		const int nBmpSize = s_width*s_height * 3/*RGB*/ + 54 /*Header size*/;
+		if (s_buffer.size() > nBmpSize) {
+			if(fetchFrame(s_buffer,s_bmpHeader,nBmpSize)>0)
+				ACE_DEBUG((LM_DEBUG, "+"));
+			else
+				ACE_DEBUG((LM_DEBUG, "~"));
+		}
+	}
 
 	gst_buffer_unmap(buffer, &map);
 	gst_sample_unref(sample);
@@ -101,4 +109,33 @@ gboolean CGsTask::my_bus_callback(GstBus *bus, GstMessage *message, gpointer dat
 	* for messages on the bus and our callback should not be called again)
 	*/
 	return TRUE;
+}
+
+int CGsTask::fetchFrame(std::vector<char>& buffer, char bmpHeader[], int nBmpSize)
+{
+	memcpy(bmpHeader + 2, &nBmpSize, sizeof(int));
+
+	int nCount = 0;
+	while (buffer.size() >= nBmpSize) {
+		if (findHeader(buffer, bmpHeader)) {
+			ACE_Message_Block *pBlock = new ACE_Message_Block(nBmpSize);
+			pBlock->copy(&buffer[0], nBmpSize);
+			s_consumer->putq(pBlock);
+			buffer.erase(buffer.begin(), buffer.begin() + nBmpSize);
+			nCount++;
+		}
+		else{
+			buffer.erase(buffer.begin());
+		}
+	}
+	return nCount;
+}
+
+bool CGsTask::findHeader(std::vector<char>& buffer,char header[])
+{
+	for (int i = 0; i < sizeof(header); i++)
+		if (buffer[i] != header[i])
+			return false;
+
+	return true;
 }
