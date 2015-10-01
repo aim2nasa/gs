@@ -1,7 +1,6 @@
 #include "CGsTask.h"
 
 ACE_Task<ACE_MT_SYNCH>* CGsTask::s_consumer = NULL;
-ACE_Auto_Event CGsTask::s_sampleEvt;
 int CGsTask::s_width = 0;
 int CGsTask::s_height = 0;
 
@@ -73,7 +72,6 @@ GstFlowReturn CGsTask::new_sample(GstAppSink *appsink, gpointer data)
 
 	gst_buffer_unmap(buffer, &map);
 	gst_sample_unref(sample);
-	CGsTask::s_sampleEvt.signal();
 	return GST_FLOW_OK;
 }
 

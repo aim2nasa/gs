@@ -16,7 +16,6 @@ int ACE_TMAIN(int argc, ACE_TCHAR *argv[])
 
 	gs.activate();
 
-	CGsTask::s_sampleEvt.wait();
 	ocv._width = CGsTask::s_width = WIDTH;
 	ocv._height = CGsTask::s_height = HEIGHT;
 	ACE_DEBUG((LM_DEBUG, "from stream, width:%d height:%d\n", ocv._width,ocv._height));
