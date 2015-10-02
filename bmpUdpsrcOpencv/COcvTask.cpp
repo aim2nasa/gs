@@ -13,9 +13,6 @@ int COcvTask::svc(void)
 {
 	ACE_DEBUG((LM_DEBUG, "(%t) COcvTask::svc start\n"));
 
-	cv::VideoCapture cap(-1);
-	if (!cap.isOpened()) ACE_ERROR_RETURN((LM_ERROR, "%p\n", "device not opened"), -1);
-
 #if BMP_DUMP
 	int n = 0;
 #endif
