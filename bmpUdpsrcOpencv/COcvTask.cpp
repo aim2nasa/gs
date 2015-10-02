@@ -44,6 +44,7 @@ int COcvTask::svc(void)
 
 		cv::Mat frame1;
 		cv::resize(frame, frame1, cv::Size(_width * ZOOM, _height * ZOOM));
+		cv::flip(frame1, frame1, 0);
 		cv::imshow("capture", frame1);
 		cv::waitKey(1);
 
