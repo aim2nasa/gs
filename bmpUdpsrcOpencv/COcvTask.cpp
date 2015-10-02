@@ -39,8 +39,16 @@ int COcvTask::svc(void)
 		n++;
 #endif
 
+		FILE *fp = fopen("tmp.bmp", "wb");
+		fwrite(message->rd_ptr(), 1, message->size(), fp);
+		fclose(fp);
+
+		cv::Mat image;
+		image = cv::imread("tmp.bmp", CV_LOAD_IMAGE_COLOR);
+
 		cv::Mat frame1;
-		cv::resize(frame, frame1, cv::Size(_width * 5, _height * 5));
+		cv::resize(image, frame1, cv::Size(_width * 4, _height * 4));
+
 		cv::imshow("capture", frame1);
 		cv::waitKey(1);
 
