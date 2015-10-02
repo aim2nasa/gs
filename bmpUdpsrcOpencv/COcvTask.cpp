@@ -28,7 +28,9 @@ int COcvTask::svc(void)
 			break;
 		}
 
-		cv::Mat frame(cv::Size(_width, _height), CV_8UC3, message->rd_ptr(), cv::Mat::AUTO_STEP);
+		ACE_ASSERT(_width > 0 && _height > 0);
+		size_t bmpHdrSize = message->size() - (_width*_height * 3 /*RGB*/);
+		cv::Mat frame(cv::Size(_width, _height), CV_8UC3, message->rd_ptr() + bmpHdrSize, cv::Mat::AUTO_STEP);
 
 #if BMP_DUMP
 		char name[256];
@@ -39,16 +41,8 @@ int COcvTask::svc(void)
 		n++;
 #endif
 
-		FILE *fp = fopen("tmp.bmp", "wb");
-		fwrite(message->rd_ptr(), 1, message->size(), fp);
-		fclose(fp);
-
-		cv::Mat image;
-		image = cv::imread("tmp.bmp", CV_LOAD_IMAGE_COLOR);
-
 		cv::Mat frame1;
-		cv::resize(image, frame1, cv::Size(_width * 4, _height * 4));
-
+		cv::resize(frame, frame1, cv::Size(_width * 4, _height * 4));
 		cv::imshow("capture", frame1);
 		cv::waitKey(1);
 
