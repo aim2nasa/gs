@@ -14,7 +14,7 @@ CGsTask::CGsTask()
 int CGsTask::svc(void)
 {
 	gchar *descr = g_strdup(
-		"udpsrc port = 52156 ! "
+		"udpsrc port = 52157 ! "
 		"appsink name=sink sync = true"
 		);
 
