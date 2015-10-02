@@ -1,6 +1,8 @@
 #include "COcvTask.h"
 #include "opencv2/opencv.hpp"
 
+#undef BMP_DUMP
+
 COcvTask::COcvTask()
 :_width(0), _height(0)
 {
@@ -14,7 +16,7 @@ int COcvTask::svc(void)
 	cv::VideoCapture cap(-1);
 	if (!cap.isOpened()) ACE_ERROR_RETURN((LM_ERROR, "%p\n", "device not opened"), -1);
 
-#if 0
+#if BMP_DUMP
 	int n = 0;
 #endif
 
@@ -31,7 +33,7 @@ int COcvTask::svc(void)
 
 		cv::Mat frame(cv::Size(_width, _height), CV_8UC3, message->rd_ptr(), cv::Mat::AUTO_STEP);
 
-#if 0
+#if BMP_DUMP
 		char name[256];
 		sprintf_s(name, "%d.bmp", n);
 		FILE *fp = fopen(name, "wb");
