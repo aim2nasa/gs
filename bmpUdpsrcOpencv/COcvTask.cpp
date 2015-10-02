@@ -32,6 +32,7 @@ int COcvTask::svc(void)
 		ACE_ASSERT(_width > 0 && _height > 0);
 		size_t bmpHdrSize = message->size() - (_width*_height * 3 /*RGB*/);
 		cv::Mat frame(cv::Size(_width, _height), CV_8UC3, message->rd_ptr() + bmpHdrSize, cv::Mat::AUTO_STEP);
+		cv::flip(frame, frame, 0);
 
 #if BMP_DUMP
 		char name[256];
@@ -44,7 +45,6 @@ int COcvTask::svc(void)
 
 		cv::Mat frame1;
 		cv::resize(frame, frame1, cv::Size(_width * ZOOM, _height * ZOOM));
-		cv::flip(frame1, frame1, 0);
 		cv::imshow("capture", frame1);
 		cv::waitKey(1);
 
