@@ -2,6 +2,7 @@
 #include "opencv2/opencv.hpp"
 
 #undef BMP_DUMP
+#define ZOOM	4
 
 COcvTask::COcvTask()
 :_width(0), _height(0)
@@ -42,7 +43,7 @@ int COcvTask::svc(void)
 #endif
 
 		cv::Mat frame1;
-		cv::resize(frame, frame1, cv::Size(_width * 4, _height * 4));
+		cv::resize(frame, frame1, cv::Size(_width * ZOOM, _height * ZOOM));
 		cv::imshow("capture", frame1);
 		cv::waitKey(1);
 
