@@ -43,9 +43,8 @@ int COcvTask::svc(void)
 		n++;
 #endif
 
-		cv::Mat frame1;
-		cv::resize(frame, frame1, cv::Size(_width * ZOOM, _height * ZOOM));
-		cv::imshow("capture", frame1);
+		cv::resize(frame, frame, cv::Size(_width * ZOOM, _height * ZOOM));
+		cv::imshow("capture", frame);
 		cv::waitKey(1);
 
 		ACE_DEBUG((LM_DEBUG, "."));
