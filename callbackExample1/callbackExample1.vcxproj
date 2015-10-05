@@ -138,6 +138,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(GSTREAMER_1_0_ROOT_X86_64)\include\gstreamer-1.0;$(GSTREAMER_1_0_ROOT_X86_64)\include\glib-2.0;$(GSTREAMER_1_0_ROOT_X86_64)\lib\glib-2.0\include;$(GSTREAMER_1_0_ROOT_X86_64)\include</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4819</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
