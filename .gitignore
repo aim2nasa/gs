@@ -10,3 +10,4 @@ MyGStreamer.v12.suo
 *.db-wal
 *.opendb
 *.user
+*.ipch
