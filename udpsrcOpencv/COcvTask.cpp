@@ -7,7 +7,7 @@ cv::String face_cascade_name = "haarcascade_frontalface_alt.xml";
 cv::String eyes_cascade_name = "haarcascade_eye_tree_eyeglasses.xml";
 cv::CascadeClassifier face_cascade;
 cv::CascadeClassifier eyes_cascade;
-cv::string window_name = "Capture - Face detection";
+cv::String window_name = "Capture - Face detection";
 
 COcvTask::COcvTask()
 :_width(0), _height(0)
