@@ -12,7 +12,7 @@ main(int argc, char* argv[])
 
     /* Build the pipeline */
     //pipeline = gst_parse_launch("playbin uri=https://www.freedesktop.org/software/gstreamer-sdk/data/media/sintel_trailer-480p.webm",NULL);
-    pipeline = gst_parse_launch("playbin uri=file:///D:/king.mp4", NULL);    //로컬에 있는 동영상 파일 재생
+    pipeline = gst_parse_launch("playbin uri=file:///D:/TestContents/movie/The%20King.mp4", NULL);    //파일 이름에 공백이 들어 있는 경우는 공백을 %20으로 대체해야 함
 
     /* Start playing */
     gst_element_set_state(pipeline, GST_STATE_PLAYING);
