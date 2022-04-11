@@ -12,7 +12,9 @@ int main(int argc, char* argv[])
 		return -1;
 	}
 
-	cv::namedWindow("capture", 1);
+	cv::namedWindow("capture", cv::WND_PROP_FULLSCREEN);
+	cv::setWindowProperty("capture", cv::WND_PROP_ASPECT_RATIO, cv::WINDOW_KEEPRATIO);
+	cv::setWindowProperty("capture", cv::WND_PROP_FULLSCREEN, cv::WINDOW_FULLSCREEN);
 	for (;;)
 	{
 		cv::Mat frame;
