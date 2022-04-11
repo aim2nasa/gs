@@ -11,7 +11,8 @@ main(int argc, char* argv[])
     gst_init(&argc, &argv);
 
     /* Build the pipeline */
-    pipeline = gst_parse_launch("playbin uri=https://www.freedesktop.org/software/gstreamer-sdk/data/media/sintel_trailer-480p.webm",NULL);
+    //pipeline = gst_parse_launch("playbin uri=https://www.freedesktop.org/software/gstreamer-sdk/data/media/sintel_trailer-480p.webm",NULL);
+    pipeline = gst_parse_launch("playbin uri=file:///D:/king.mp4", NULL);    //로컬에 있는 동영상 파일 재생
 
     /* Start playing */
     gst_element_set_state(pipeline, GST_STATE_PLAYING);
