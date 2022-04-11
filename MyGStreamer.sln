@@ -23,6 +23,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "bmpUdpsrc", "bmpUdpsrc\bmpU
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "bmpUdpsrcOpencv", "bmpUdpsrcOpencv\bmpUdpsrcOpencv.vcxproj", "{0ADC18F9-D348-45E3-8678-0AB10C63F801}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VideoFileCapture", "VideoFileCapture\VideoFileCapture.vcxproj", "{BD111E76-9BA8-4D08-8614-18D68DAB434D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -70,6 +72,10 @@ Global
 		{0ADC18F9-D348-45E3-8678-0AB10C63F801}.Debug|x64.Build.0 = Debug|x64
 		{0ADC18F9-D348-45E3-8678-0AB10C63F801}.Release|x64.ActiveCfg = Release|x64
 		{0ADC18F9-D348-45E3-8678-0AB10C63F801}.Release|x64.Build.0 = Release|x64
+		{BD111E76-9BA8-4D08-8614-18D68DAB434D}.Debug|x64.ActiveCfg = Release|x64
+		{BD111E76-9BA8-4D08-8614-18D68DAB434D}.Debug|x64.Build.0 = Release|x64
+		{BD111E76-9BA8-4D08-8614-18D68DAB434D}.Release|x64.ActiveCfg = Release|x64
+		{BD111E76-9BA8-4D08-8614-18D68DAB434D}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
