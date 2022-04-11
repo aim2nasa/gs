@@ -5,7 +5,7 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
-	cv::VideoCapture cap(-1);
+	cv::VideoCapture cap("D:\\TestContents\\movie\\Aladdin.2019.1080p.HDRip.x264.6CH-MkvCage.com.mkv");
 
 	if (!cap.isOpened()) {
 		cout << "capture device not opened" << endl;
