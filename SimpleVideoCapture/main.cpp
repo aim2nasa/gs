@@ -6,6 +6,8 @@ using namespace std;
 int main(int argc, char *argv[])
 {
 	cv::VideoCapture cap(0);
+	cap.set(cv::CAP_PROP_FRAME_WIDTH, 1920);
+	cap.set(cv::CAP_PROP_FRAME_HEIGHT, 1080);
 
 	if (!cap.isOpened()) {
 		cout << "capture device not opened" << endl;
