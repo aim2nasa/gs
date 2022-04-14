@@ -5,7 +5,7 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-	cv::VideoCapture cap(-1);
+	cv::VideoCapture cap(0);
 
 	if (!cap.isOpened()) {
 		cout << "capture device not opened" << endl;
